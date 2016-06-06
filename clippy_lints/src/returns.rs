@@ -89,20 +89,18 @@ impl ReturnPass {
     // Check for "let x = EXPR; x"
     fn check_let_return(&mut self, cx: &EarlyContext, block: &Block) {
         // we need both a let-binding stmt and an expr
-        if_let_chain! {
-            [
-                let Some(stmt) = block.stmts.last(),
-                let Some(ref retexpr) = block.expr,
-                let StmtKind::Decl(ref decl, _) = stmt.node,
-                let DeclKind::Local(ref local) = decl.node,
-                let Some(ref initexpr) = local.init,
-                let PatKind::Ident(_, Spanned { node: id, .. }, _) = local.pat.node,
-                let ExprKind::Path(_, ref path) = retexpr.node,
-                match_path_ast(path, &[&id.name.as_str()])
-            ], {
+        if_let_chain! {[
+            let Some(stmt) = block.stmts.last(),
+            let Some(ref retexpr) = block.expr,
+            let StmtKind::Decl(ref decl, _) = stmt.node,
+            let DeclKind::Local(ref local) = decl.node,
+            let Some(ref initexpr) = local.init,
+            let PatKind::Ident(_, Spanned { node: id, .. }, _) = local.pat.node,
+            let ExprKind::Path(_, ref path) = retexpr.node,
+            match_path_ast(path, &[&id.name.as_str()])
+        ], {
                 self.emit_let_lint(cx, retexpr.span, initexpr.span);
-            }
-        }
+        }}
     }
 
     fn emit_let_lint(&mut self, cx: &EarlyContext, lint_span: Span, note_span: Span) {
