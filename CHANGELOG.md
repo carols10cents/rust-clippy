@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 0.0.75 — 2016-06-07
+* New lint: [`not_unsafe_ptr_arg_deref`]
+
 ## 0.0.74 — 2016-06-07
 * Fix bug with `cargo-clippy` JSON parsing
 * Add the `CLIPPY_DISABLE_WIKI_LINKS` environment variable to deactivate the
@@ -199,6 +202,7 @@ All notable changes to this project will be documented in this file.
 [`non_ascii_literal`]: https://github.com/Manishearth/rust-clippy/wiki#non_ascii_literal
 [`nonminimal_bool`]: https://github.com/Manishearth/rust-clippy/wiki#nonminimal_bool
 [`nonsensical_open_options`]: https://github.com/Manishearth/rust-clippy/wiki#nonsensical_open_options
+[`not_unsafe_ptr_arg_deref`]: https://github.com/Manishearth/rust-clippy/wiki#not_unsafe_ptr_arg_deref
 [`ok_expect`]: https://github.com/Manishearth/rust-clippy/wiki#ok_expect
 [`option_map_unwrap_or`]: https://github.com/Manishearth/rust-clippy/wiki#option_map_unwrap_or
 [`option_map_unwrap_or_else`]: https://github.com/Manishearth/rust-clippy/wiki#option_map_unwrap_or_else
